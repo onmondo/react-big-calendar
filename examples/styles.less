@@ -374,12 +374,38 @@ h4 a:focus .anchor-icon {
     font-weight: bold;
   }
 }
+.rbc-today{
+  background: #fff;
+}
 .rbc-event{
   background: #E9F9F0;
-  border: 1px solid rgba(1,216,90,0.3);
-  border-radius: 2px;
+  border: 1px solid #A1EEC1;
   color: #323648;
-  &.rbc-selected{
+}
+.rbc-day-slot{ 
+  .rbc-event{
     background: #E9F9F0;
+    border: 1px solid #A1EEC1;
+    border-radius: 2px;
+    color: #323648;
+    padding: 10px;
+    &.rbc-selected{
+      background: #E9F9F0;
+    }
   }
+}
+.rbc-off-range-bg{
+  background: #F9F9F9;
+}
+.rbc-day-bg + .rbc-day-bg {
+  border-left: 1px solid #F1F2F4;
+}
+.rbc-month-row + .rbc-month-row {
+  border-top: 1px solid #F1F2F4;
+}
+.rbc-time-content > * + * > * {
+  border-left: 1px solid #F1F2F4;
+}
+.rbc-timeslot-group {
+  border-bottom: 1px solid #F1F2F4;
 }
