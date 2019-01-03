@@ -319,3 +319,67 @@ h4 a:focus .anchor-icon {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
     0 1px 5px 0 rgba(0, 0, 0, 0.12);
 }
+
+.rbc-toolbar{
+  .rbc-btn-group:last-child{
+    button{
+      color: #AAADB6;
+      cursor: pointer;
+      font-size: 11px;
+      border: 0;
+      outline: none;
+      padding: 20px 0 0;
+      margin-left: 15px;
+      position: relative;
+      padding-top: 20px;
+      &:before{
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background-image: url(./images/ic-day.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        top: 0;
+        left: 50%;
+        margin-left: -10px;
+        position: absolute;
+        top: 0;
+      }
+      &.rbc-active,
+      &:active{
+        background: transparent;
+        box-shadow: none;
+        color: #323648;
+        &:before{
+          background-image: url(./images/ic-day-active.svg);
+        }
+      }
+      &:hover{
+        background: transparent;
+      }
+    }
+  }
+}
+.rbc-events-container{
+  > div{
+    background: #E9F9F0;
+    border: 1px solid rgba(1,216,90,0.3);
+    border-radius: 2px;
+    color: #323648;
+    font-size: 14px;
+  }
+  .rbc-event-label{
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+.rbc-event{
+  background: #E9F9F0;
+  border: 1px solid rgba(1,216,90,0.3);
+  border-radius: 2px;
+  color: #323648;
+  &.rbc-selected{
+    background: #E9F9F0;
+  }
+}
