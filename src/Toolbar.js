@@ -8,40 +8,79 @@ class Toolbar extends React.Component {
     view: PropTypes.string.isRequired,
     views: PropTypes.arrayOf(PropTypes.string).isRequired,
     label: PropTypes.node.isRequired,
+    previousLabel: PropTypes.object,
+    currentLabel: PropTypes.object,
+    nextLabel: PropTypes.object,
     localizer: PropTypes.object,
     onNavigate: PropTypes.func.isRequired,
     onView: PropTypes.func.isRequired,
   }
 
   render() {
-    let { localizer: { messages }, label } = this.props
+    let {
+      localizer: { messages },
+      label,
+      previousLabel,
+      currentLabel,
+      nextLabel,
+      view,
+    } = this.props
 
     return (
       <div className="rbc-toolbar">
-        <span className="rbc-btn-group">
-          <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.TODAY)}
-          >
-            {messages.today}
-          </button>
-          <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          >
-            {messages.previous}
-          </button>
-          <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.NEXT)}
-          >
-            {messages.next}
-          </button>
+        <span className="rbc-btn-group view-day">
+          {view === 'day' ? (
+            <div onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
+              <span>{previousLabel.number}</span>
+              <span className="number-wrapper -current">
+                <span>{previousLabel.name}</span>
+              </span>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+            >
+              {messages.previous}
+            </button>
+          )}
+          {view === 'day' ? (
+            <div onClick={this.navigate.bind(null, navigate.TODAY)}>
+              <span>{currentLabel.number}</span>
+              <span className="number-wrapper">
+                <span>{currentLabel.name}</span>
+              </span>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={this.navigate.bind(null, navigate.TODAY)}
+            >
+              {label}
+            </button>
+          )}
+          {view === 'day' ? (
+            <div onClick={this.navigate.bind(null, navigate.NEXT)}>
+              <span>{nextLabel.number}</span>
+              <span className="number-wrapper">
+                <span>{nextLabel.name}</span>
+              </span>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={this.navigate.bind(null, navigate.NEXT)}
+            >
+              {messages.next}
+            </button>
+          )}
         </span>
 
         <span className="rbc-toolbar-label">{label}</span>
 
-        <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
+        <span className="rbc-btn-group view-names">
+          {this.viewNamesGroup(messages)}
+        </span>
       </div>
     )
   }

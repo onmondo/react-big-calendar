@@ -25,6 +25,7 @@ import defaults from 'lodash/defaults'
 import transform from 'lodash/transform'
 import mapValues from 'lodash/mapValues'
 import { wrapAccessor } from './utils/accessors'
+import moment from 'moment'
 
 function viewNames(_views) {
   return !Array.isArray(_views) ? Object.keys(_views) : _views
@@ -867,6 +868,26 @@ class Calendar extends React.Component {
 
     let CalToolbar = components.toolbar || Toolbar
     const label = View.title(current, { localizer, length })
+    const currentLabel = {
+      name: moment(current).format('D'),
+      number: moment(current).format('ddd'),
+    }
+    const previousLabel = {
+      name: moment(current)
+        .subtract(1, 'd')
+        .format('D'),
+      number: moment(current)
+        .subtract(1, 'd')
+        .format('ddd'),
+    }
+    const nextLabel = {
+      name: moment(current)
+        .add(1, 'd')
+        .format('D'),
+      number: moment(current)
+        .add(1, 'd')
+        .format('ddd'),
+    }
 
     return (
       <div
@@ -880,6 +901,9 @@ class Calendar extends React.Component {
             view={view}
             views={viewNames}
             label={label}
+            previousLabel={previousLabel}
+            currentLabel={currentLabel}
+            nextLabel={nextLabel}
             onView={this.handleViewChange}
             onNavigate={this.handleNavigate}
             localizer={localizer}
@@ -952,7 +976,11 @@ class Calendar extends React.Component {
     }
 
     let views = this.getViews()
-    this.handleRangeChange(this.props.date || this.props.getNow(), views[view], view)
+    this.handleRangeChange(
+      this.props.date || this.props.getNow(),
+      views[view],
+      view
+    )
   }
 
   handleSelectEvent = (...args) => {

@@ -321,42 +321,76 @@ h4 a:focus .anchor-icon {
 }
 
 .rbc-toolbar{
-  .rbc-btn-group:last-child{
-    button{
-      color: #AAADB6;
-      cursor: pointer;
-      font-size: 11px;
-      border: 0;
-      outline: none;
-      padding: 20px 0 0;
-      margin-left: 15px;
-      position: relative;
-      padding-top: 20px;
-      &:before{
-        content: '';
-        display: block;
-        width: 20px;
-        height: 20px;
-        background-image: url(./images/ic-day.svg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        top: 0;
-        left: 50%;
-        margin-left: -10px;
-        position: absolute;
-        top: 0;
-      }
-      &.rbc-active,
-      &:active{
-        background: transparent;
-        box-shadow: none;
-        color: #323648;
+  .rbc-btn-group{
+    &.view-names{
+      button{
+        color: #AAADB6;
+        cursor: pointer;
+        font-size: 11px;
+        border: 0;
+        outline: none;
+        padding: 20px 0 0;
+        margin-left: 15px;
+        position: relative;
+        padding-top: 20px;
         &:before{
-          background-image: url(./images/ic-day-active.svg);
+          content: '';
+          display: block;
+          width: 20px;
+          height: 20px;
+          background-image: url(./images/ic-day.svg);
+          background-repeat: no-repeat;
+          background-size: cover;
+          top: 0;
+          left: 50%;
+          margin-left: -10px;
+          position: absolute;
+          top: 0;
+        }
+        &.rbc-active,
+        &:active{
+          background: transparent;
+          box-shadow: none;
+          color: #323648;
+          &:before{
+            background-image: url(./images/ic-day-active.svg);
+          }
+        }
+        &:hover{
+          background: transparent;
         }
       }
-      &:hover{
-        background: transparent;
+    }
+    &.view-day{
+      > div{
+        display: inline-block;
+        margin-right: 20px;
+        text-align: center;
+        span{
+          color: #323648;
+          display: block;
+          font-size: 12px;
+          font-weight: bold;
+          text-transform: uppercase;
+          margin-bottom: 4px;
+        }
+        .number-wrapper{
+          width: 36px;
+          height: 36px;
+          text-align: center;
+          line-height: 36px;
+          span{
+            font-size: 16px;
+            font-weight: normal;
+          }
+          &.-current{
+            background: #308EFB;
+            border-radius: 50%;
+            span{
+              color: #fff;
+            }
+          }
+        }
       }
     }
   }
