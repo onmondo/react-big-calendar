@@ -32,7 +32,7 @@ class Toolbar extends React.Component {
           {view === 'day' ? (
             <div onClick={this.navigate.bind(null, navigate.PREVIOUS)}>
               <span>{previousLabel.number}</span>
-              <span className="number-wrapper -current">
+              <span className="number-wrapper">
                 <span>{previousLabel.name}</span>
               </span>
             </div>
@@ -47,7 +47,7 @@ class Toolbar extends React.Component {
           {view === 'day' ? (
             <div onClick={this.navigate.bind(null, navigate.TODAY)}>
               <span>{currentLabel.number}</span>
-              <span className="number-wrapper">
+              <span className="number-wrapper -current">
                 <span>{currentLabel.name}</span>
               </span>
             </div>
